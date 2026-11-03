@@ -1,4 +1,4 @@
-# Dynamic Risk Preferences, Loss Chasing, and Asymmetric Stopping in Repeated Financial Gambles: Field Evidence from High-Stakes Online Poker
+# Dynamic Risk Preferences, Loss Chasing, and Reference-Dependent Stopping in Repeated Contests: Field Evidence from Online Poker
 
 **Author:** Atanas Bobev  
 **Affiliation:** Department of Economics, American University in Bulgaria  
@@ -9,7 +9,7 @@
 
 ## Abstract
 
-We investigate dynamic risk preferences, within-session wealth reference points, and asymmetric stopping rules using a census of 4,070,556 hand-level decisions across 119,584 completed sessions from the University of Alberta Computer Poker Research Group database. Exploiting continuous hand-by-hand bankroll tracking, we test how cumulative intra-session gains and losses alter voluntary risk-taking and session termination. Controlling for player fixed effects, table stakes, position, and time-on-task fatigue, we find evidence of a dual behavioral regime. In the gain domain, players exhibit a significant House Money Effect: accumulating prior profits increases voluntary pot entry (VPIP, $+0.57$ percentage points, $p < 0.001$) and preflop raising ($+0.26$ percentage points, $p = 0.004$). In the loss domain, moderate losses induce risk aversion, whereas deepening cumulative losses trigger severe loss-chasing: continuous bet-to-stack ratios escalate sharply with loss magnitude ($t = 18.99, p < 10^{-79}$). Examining session quitting decisions, we document an acute "never quit on a win" asymmetry: the per-hand termination hazard is only 0.36% immediately following a winning hand, compared to 2.48% after a loss and 5.02% following voluntary folds. Furthermore, 1,340 sessions terminate at exact zero net profit/loss, reflecting sharp cognitive bunching at the break-even reference point. Sunk-cost escalation systematically distorts participation, as players prolong losing sessions in attempts to claw back deficits. Our findings provide natural field evidence bridging prospect theory, dynamic labor supply, and self-regulation failures in repeated financial gambles.
+We examine how dynamic within-session wealth fluctuations alter risk-taking and session termination decisions in repeated contests. Analyzing 4,070,556 hand-level decisions across 119,584 completed sessions from the University of Alberta Computer Poker Research Group archive (1995–1997), we exploit continuous bankroll tracking within an environment where objective probabilities are governed by invariant combinatorial rules. Controlling for player fixed effects, table stakes, position, and time-on-task, we identify two distinct behavioral regimes. In the gain domain, competitors exhibit a house money effect: accumulated profits increase voluntary pot entry (VPIP, $+0.59$ percentage points, $p < 0.001$), preflop raising ($+0.27$ percentage points, $p = 0.003$), and absolute wager sizes ($+0.57$ chips per 100 chips gained, $p < 0.001$). In the loss domain, increasing cumulative deficits trigger systematic loss chasing: holding current stack size constant, each 100 chips of deficit increases absolute bet sizes by $+0.99$ chips ($p < 0.001$) and escalates the bet-to-stack ratio ($t = 15.52, p < 10^{-50}$). At the session level, termination choices exhibit sharp reference dependence. Players display an acute "never quit on a win" asymmetry: the per-hand exit hazard is 0.36% immediately following a winning hand, compared to 2.48% after a loss and 5.02% after uncontested folds. Furthermore, 1,340 sessions terminate at exact net break-even ($W = 0$), with active round-trip clawbacks accounting for 54.9% of these exits. While capital constraints truncate losing sessions on average, surviving losing sessions display pronounced right-tail persistence, consistent with selective sunk-cost chasing. Our results provide empirical support for dynamic mental accounting and dual-account prospect theory.
 
 ---
 
@@ -17,11 +17,14 @@ We investigate dynamic risk preferences, within-session wealth reference points,
 
 | Phenomenon | Empirical Metric | Econometric Estimate | Statistical Significance |
 | :--- | :--- | :--- | :--- |
-| **House Money (VPIP)** | Voluntary Pot Entry in Gain Domain | $+0.572$ pp | $t = 4.05, p = 5.07 \times 10^{-5}$ |
-| **House Money (PFR)** | Preflop Raise in Gain Domain | $+0.262$ pp | $t = 2.91, p = 3.63 \times 10^{-3}$ |
-| **Loss Chasing** | Bet / Stack Ratio with Loss Magnitude | $+0.00488$ per 100 chips | $t = 18.99, p = 1.98 \times 10^{-80}$ |
+| **House Money (VPIP)** | Voluntary Pot Entry in Gain Domain | $+0.587$ pp | $t = 4.16, p = 3.25 \times 10^{-5}$ |
+| **House Money (PFR)** | Preflop Raise in Gain Domain | $+0.269$ pp | $t = 2.99, p = 2.81 \times 10^{-3}$ |
+| **House Money (Stakes)** | Absolute Bet Sizing with Gain Magnitude | $+0.571$ chips / 100 chips | $t = 5.25, p = 1.53 \times 10^{-7}$ |
+| **Loss Chasing (Stakes)** | Absolute Bet Sizing with Loss Magnitude | $+0.990$ chips / 100 chips | $t = 6.58, p = 4.79 \times 10^{-11}$ |
+| **Loss Chasing (Relative)** | Bet / Stack Ratio (controlling for $\ln(\text{Stack})$) | $+0.00352$ / 100 chips | $t = 15.52, p = 2.65 \times 10^{-54}$ |
 | **Break-Even Bunching** | Sessions Ending at Exact $W = 0$ | $1,340$ sessions ($\hat{b} = +0.284$) | $p < 0.001$ |
-| **"Never Quit on Win"** | Exit Hazard after Win vs. Loss | $0.36\%$ vs. $2.48\%$ | $\chi^2 = 14,210, p < 10^{-300}$ |
+| **Active Clawbacks** | Quits after Recovering from Deficit to 0 | $735$ sessions ($54.9\%$ of $W=0$) | $p < 0.001$ |
+| **"Never Quit on Win"** | Exit Hazard after Win vs. Loss vs. Fold | $0.36\%$ vs. $2.48\%$ vs. $5.02\%$ | $\chi^2 = 14,210, p < 10^{-300}$ |
 
 ---
 
@@ -36,17 +39,19 @@ poker-behavioral-economics/
 │   ├── stream-pipeline.ts             # In-stream dataset generator
 │   └── index.ts                       # CLI pipeline entry point
 ├── analysis/                          # Econometric & Statistical Suite
-│   ├── 01_house_money_panel.py        # Player fixed-effects panel regressions
+│   ├── run_robust_regressions.py      # Player FE panel regressions with stack controls
+│   ├── 01_house_money_panel.py        # Baseline panel regressions
 │   ├── 02_bunching_hazard_stopping.py # McCrary bunching and discrete-time hazard models
 │   ├── 03_summary_statistics.py       # Table 1 descriptive statistics generator
+│   ├── audit_referee_concerns.py      # Micro-level audit of clawbacks and bust-outs
 │   ├── generate_figures.py            # Publication vector & PNG figure generator
 │   ├── build_paper_docx.py            # Formatted Word manuscript compiler
 │   └── build_paper_pdf.py             # Headless Chromium PDF compiler
 ├── figures/                           # High-Resolution Publication Figures
-│   ├── fig1_house_money_curve.png     # House money curve & loss-chasing kink
+│   ├── fig1_house_money_curve.png     # House money curve & absolute bet sizing
 │   ├── fig2_breakeven_bunching.png    # Terminal wealth density bunching at W=0
 │   ├── fig3_stopping_hazard.png       # Discrete-time termination hazard rate
-│   └── fig4_duration_escalation.png   # Asymmetric duration distribution
+│   └── fig4_duration_escalation.png   # Duration CDF and length distributions
 ├── paper/                             # Manuscript Artifacts
 │   ├── manuscript.md                  # Complete academic text
 │   ├── Dynamic_Risk_Preferences_Poker_Economics.docx
@@ -76,10 +81,10 @@ npm run typecheck
 ### 3. Econometric Estimation & Figure Generation
 To replicate the regression tables and figures:
 ```bash
-# Run Player Fixed Effects regressions (Table 2)
-python analysis/01_house_money_panel.py
+# Run Player Fixed Effects regressions with stack controls (Table 2)
+python analysis/run_robust_regressions.py
 
-# Run Bunching and Hazard Survival models (Table 3 & Table 4)
+# Run Bunching and Hazard Survival models (Table 3)
 python analysis/02_bunching_hazard_stopping.py
 
 # Generate publication figures (Figures 1-4)

@@ -4,11 +4,12 @@ import subprocess
 import shutil
 
 """
-Flagship Paper PDF Compiler (AER / JEBO / JDM Standard)
-Encodes publication figures in Base64 and compiles via Headless Microsoft Edge.
-Outputs to:
-  1. paper/Dynamic_Risk_Preferences_Poker_Economics.pdf
-  2. ~/Downloads/Dynamic_Risk_Preferences_Poker_Economics.pdf
+Refined Academic PDF Compiler (AER / JEBO / JDM Standard)
+Implements true academic typesetting:
+- Classic Three-Line (Booktabs) tables
+- Minimalist typography (Times New Roman, crisp monochrome rules)
+- Muted academic figure styling
+- Zero AI-style alert banners or saturated primary colored boxes
 """
 
 def encode_image(img_path):
@@ -27,11 +28,11 @@ html_content = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Dynamic Risk Preferences, Loss Chasing, and Asymmetric Stopping in Repeated Financial Gambles</title>
+<title>Dynamic Risk Preferences, Loss Chasing, and Reference-Dependent Stopping in Repeated Contests</title>
 <style>
   @page {{
-    size: A4;
-    margin: 20mm 20mm 20mm 20mm;
+    size: letter;
+    margin: 25mm 22mm 25mm 22mm;
     @bottom-center {{
       content: counter(page);
       font-size: 10pt;
@@ -40,64 +41,63 @@ html_content = f"""<!DOCTYPE html>
   }}
   body {{
     font-family: "Times New Roman", Times, serif;
-    font-size: 11pt;
-    line-height: 1.45;
-    color: #111;
+    font-size: 10.5pt;
+    line-height: 1.4;
+    color: #111111;
     margin: 0;
     padding: 0;
     text-align: justify;
   }}
   h1 {{
-    font-size: 17pt;
+    font-size: 15.5pt;
     font-weight: bold;
     text-align: center;
     line-height: 1.25;
-    margin-bottom: 8px;
+    margin-top: 10px;
+    margin-bottom: 12px;
   }}
   .authors {{
     text-align: center;
-    font-size: 12pt;
+    font-size: 11.5pt;
     font-weight: bold;
     margin-bottom: 2px;
   }}
   .affiliation {{
     text-align: center;
-    font-size: 10pt;
+    font-size: 9.5pt;
     font-style: italic;
-    color: #444;
-    margin-bottom: 18px;
+    color: #333333;
+    margin-bottom: 20px;
   }}
-  .abstract-box {{
-    margin: 0 25px 20px 25px;
-    padding: 12px 16px;
-    background-color: #fbfbfb;
-    border-left: 3px solid #2b547e;
-    font-size: 10pt;
+  .abstract-container {{
+    margin: 0 20px 22px 20px;
+    font-size: 9.5pt;
     line-height: 1.35;
   }}
-  .abstract-title {{
+  .abstract-label {{
     font-weight: bold;
-    font-size: 10.5pt;
-    margin-bottom: 5px;
-    color: #2b547e;
-    text-align: left;
+    font-size: 10pt;
+    margin-bottom: 4px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }}
   .keywords {{
-    margin-top: 8px;
-    font-size: 9.5pt;
+    margin-top: 10px;
+    font-size: 9pt;
   }}
   h2 {{
-    font-size: 13pt;
+    font-size: 12pt;
     font-weight: bold;
-    color: #111;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 3px;
-    margin-top: 22px;
-    margin-bottom: 10px;
+    color: #111111;
+    margin-top: 20px;
+    margin-bottom: 8px;
     page-break-after: avoid;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
   }}
   h3 {{
-    font-size: 11.5pt;
+    font-size: 11pt;
     font-weight: bold;
     margin-top: 14px;
     margin-bottom: 6px;
@@ -105,131 +105,106 @@ html_content = f"""<!DOCTYPE html>
   }}
   p {{
     margin-top: 0;
-    margin-bottom: 9px;
+    margin-bottom: 8px;
     text-indent: 1.5em;
   }}
   .no-indent {{
     text-indent: 0;
   }}
+  /* Classic Three-Line Booktabs Table Styling */
   table {{
     width: 100%;
     border-collapse: collapse;
     margin: 14px 0 16px 0;
-    font-size: 9pt;
-    line-height: 1.25;
+    font-size: 8.5pt;
+    line-height: 1.2;
     page-break-inside: avoid;
   }}
   th, td {{
-    padding: 4px 6px;
+    padding: 3.5px 5px;
     text-align: left;
   }}
   th {{
-    border-top: 1.5px solid #111;
-    border-bottom: 1px solid #111;
+    border-top: 1.2pt solid #111111;
+    border-bottom: 0.8pt solid #111111;
     font-weight: bold;
   }}
   .subhead {{
     font-weight: bold;
-    background-color: #f5f5f5;
-    border-top: 0.5px solid #ddd;
-    border-bottom: 0.5px solid #ddd;
+    border-top: 0.5pt solid #cccccc;
+    border-bottom: 0.5pt solid #cccccc;
+    background-color: transparent;
   }}
   .table-bottom {{
-    border-bottom: 1.5px solid #111;
+    border-bottom: 1.2pt solid #111111;
   }}
-  .table-caption {{
+  .table-title {{
     font-weight: bold;
-    font-size: 9.5pt;
-    margin-bottom: 4px;
-    text-align: left;
+    font-size: 9pt;
+    margin-bottom: 3px;
     page-break-after: avoid;
   }}
   .table-notes {{
     font-size: 8pt;
-    color: #444;
-    margin-top: 4px;
-    line-height: 1.2;
+    color: #333333;
+    margin-top: 3px;
+    line-height: 1.15;
   }}
-  .figure-container {{
+  .figure-box {{
     text-align: center;
     margin: 16px 0 18px 0;
     page-break-inside: avoid;
   }}
-  .figure-container img {{
+  .figure-box img {{
     max-width: 95%;
     height: auto;
-    border: 0.5px solid #e0e0e0;
   }}
   .figure-caption {{
-    font-size: 9pt;
+    font-size: 8.5pt;
     font-style: italic;
-    margin-top: 5px;
-    color: #222;
-  }}
-  .hypothesis-box {{
-    margin: 12px 20px;
-    padding: 8px 14px;
-    background-color: #f4f7f9;
-    border-left: 3px solid #005a9c;
-    font-style: italic;
-    font-size: 10pt;
+    margin-top: 4px;
+    color: #222222;
   }}
   .references p {{
     text-indent: -1.8em;
     padding-left: 1.8em;
-    font-size: 9.5pt;
-    margin-bottom: 5px;
+    font-size: 9pt;
+    margin-bottom: 4px;
+    line-height: 1.3;
   }}
 </style>
 </head>
 <body>
 
-<h1>Dynamic Risk Preferences, Loss Chasing, and Asymmetric Stopping in Repeated Financial Gambles: Field Evidence from High-Stakes Online Poker</h1>
+<h1>Dynamic Risk Preferences, Loss Chasing, and Reference-Dependent Stopping in Repeated Contests: Field Evidence from Online Poker</h1>
 
 <div class="authors">Atanas Bobev</div>
-<div class="affiliation">Department of Economics, American University in Bulgaria<br>Correspondence: amb230@aubg.edu</div>
+<div class="affiliation">Department of Economics, American University in Bulgaria<br>Contact: amb230@aubg.edu</div>
 
-<div class="abstract-box">
-  <div class="abstract-title">Abstract</div>
-  We investigate dynamic risk preferences, within-session wealth reference points, and asymmetric stopping rules using a census of 4,070,556 hand-level decisions across 119,584 completed sessions from the University of Alberta Computer Poker Research Group database. Exploiting continuous hand-by-hand bankroll tracking, we test how cumulative intra-session gains and losses alter voluntary risk-taking and session termination. Controlling for player fixed effects, table stakes, position, and time-on-task fatigue, we find evidence of a dual behavioral regime. In the gain domain, players exhibit a significant House Money Effect: accumulating prior profits increases voluntary pot entry (VPIP, +0.57 percentage points, p &lt; 0.001) and preflop raising (+0.26 percentage points, p = 0.004). In the loss domain, moderate losses induce risk aversion, whereas deepening cumulative losses trigger severe loss-chasing: continuous bet-to-stack ratios escalate sharply with loss magnitude (t = 18.99, p &lt; 10<sup>-79</sup>). Examining session quitting decisions, we document an acute "never quit on a win" asymmetry: the per-hand termination hazard is only 0.36% immediately following a winning hand, compared to 2.48% after a loss and 5.02% following voluntary folds. Furthermore, 1,340 sessions terminate at exact zero net profit/loss, reflecting sharp cognitive bunching at the break-even reference point. Sunk-cost escalation systematically distorts participation, as players prolong losing sessions in attempts to claw back deficits. Our findings provide natural field evidence bridging prospect theory, dynamic labor supply, and self-regulation failures in repeated financial gambles.
+<div class="abstract-container">
+  <div class="abstract-label">Abstract</div>
+  We examine how dynamic within-session wealth fluctuations alter risk-taking and session termination decisions in repeated contests. Analyzing 4,070,556 hand-level decisions across 119,584 completed sessions from the University of Alberta Computer Poker Research Group archive (1995–1997), we exploit continuous bankroll tracking within an environment where objective probabilities are governed by invariant combinatorial rules. Controlling for player fixed effects, table stakes, position, and time-on-task, we identify two distinct behavioral regimes. In the gain domain, competitors exhibit a house money effect: accumulated profits increase voluntary pot entry (VPIP, +0.59 percentage points, p &lt; 0.001), preflop raising (+0.27 percentage points, p = 0.003), and absolute wager sizes (+0.57 chips per 100 chips gained, p &lt; 0.001). In the loss domain, increasing cumulative deficits trigger systematic loss chasing: holding current stack size constant, each 100 chips of deficit increases absolute bet sizes by +0.99 chips (p &lt; 0.001) and escalates the bet-to-stack ratio (t = 15.52, p &lt; 10<sup>-50</sup>). At the session level, termination choices exhibit sharp reference dependence. Players display an acute "never quit on a win" asymmetry: the per-hand exit hazard is 0.36% immediately following a winning hand, compared to 2.48% after a loss and 5.02% after uncontested folds. Furthermore, 1,340 sessions terminate at exact net break-even (W = 0), with active round-trip clawbacks accounting for 54.9% of these exits. While capital constraints truncate losing sessions on average, surviving losing sessions display pronounced right-tail persistence, consistent with selective sunk-cost chasing. Our results provide empirical support for dynamic mental accounting and dual-account prospect theory.
   <div class="keywords">
-    <strong>Keywords:</strong> Behavioral economics, House money effect, Loss chasing, Reference-dependent preferences, Stopping rules, Online poker, Field experiment.<br>
+    <strong>Keywords:</strong> Reference-dependent preferences, House money effect, Loss chasing, Stopping rules, Dynamic labor supply, Contest theory, Field data.<br>
     <strong>JEL Classifications:</strong> D81, D91, C93, G41.
   </div>
 </div>
 
 <h2>1. Introduction</h2>
-<p>How individuals adjust their willingness to bear financial risk in response to recent gains and losses is a foundational question in behavioral economics and finance. Under standard neoclassical expected utility theory with constant absolute or relative risk aversion, small changes in wealth generated during high-frequency consumption or gambling sessions should exert negligible effects on local risk tolerances (Rabin, 2000). Yet empirical studies across retail stock trading, sports betting, and casino gambling frequently document pronounced path-dependent fluctuations in risk appetite (Barberis, 2012).</p>
+<p>Standard neoclassical expected utility theory posits that risk preferences are defined over final wealth states. For small-to-moderate stakes encountered in daily market transactions, consumption gambles, or repeated contests, plausible utility functions are approximately linear, implying risk-neutral marginal behavior (Rabin, 2000). Contrary to this benchmark, field and laboratory evidence shows that individuals frequently alter their willingness to bear risk based on recent path-dependent outcomes (Thaler and Johnson, 1990; Post et al., 2008; Barberis, 2012).</p>
 
-<p>Two primary behavioral mechanisms have been proposed to explain these dynamics. First, Thaler and Johnson (1990) identify the <em>House Money Effect</em>: following prior gains, agents segregate earnings into an auxiliary mental account, viewing subsequent wagers as financed by the "house's money" rather than personal endowment. This cognitive compartmentalization dampens the psychic pain of subsequent losses, inducing heightened risk-seeking. Second, Kahneman and Tversky's (1979) Prospect Theory posits an S-shaped value function characterized by loss aversion and diminishing sensitivity, implying local risk-seeking in the loss domain. When facing cumulative paper deficits, agents may gamble aggressively to break even, a phenomenon known as loss chasing or the break-even effect (Imas, 2016).</p>
+<p>Two primary behavioral frameworks explain such path dependence. First, under mental accounting (Thaler, 1985; Thaler and Johnson, 1990), individuals segregate recent gains from baseline wealth. Prior earnings are treated as "house money," attenuating the perceived disutility of subsequent losses and encouraging risk-taking. Second, prospect theory (Kahneman and Tversky, 1979) specifies an S-shaped value function characterized by loss aversion (&lambda; &gt; 1) and convexity in the negative domain. When individuals accumulate paper losses that have not yet been formally realized, diminishing sensitivity can induce risk-seeking gambles aimed at recovering the initial endowment (the break-even effect; Imas, 2016).</p>
 
-<p>Parallel to the question of dynamic risk-taking is the problem of <em>session stopping</em>: when do agents terminate repeated gambling or labor episodes? In seminal analyses of New York City taxi drivers, Camerer et al. (1997) argued that daily income reference points generate negative labor supply elasticities, causing workers to quit early on lucrative days and prolong effort on slow days. While subsequent field evidence has debated the stability of these daily targets (Farber, 2005, 2015), the interplay between dynamic intra-session wealth, cognitive fatigue, and endogenous stopping boundaries remains difficult to isolate in observational market settings where pricing, market liquidity, and opportunity costs shift continuously.</p>
+<p>Simultaneously, dynamic risk environments require agents to make endogenous <em>stopping decisions</em>: deciding when to cease participation. Analogous to daily labor supply choices among independent contractors (Camerer et al., 1997; Farber, 2005, 2008, 2015), repeated contest participants must weigh the marginal utility of continuation against physical or cognitive fatigue. When agents evaluate performance relative to an intra-session reference point—most saliently, breaking even (<em>W</em> = 0)—stopping probabilities should exhibit sharp structural discontinuities around the reference threshold.</p>
 
-<p>In this paper, we exploit a unique natural field laboratory: high-frequency, multi-player Texas Hold'em poker from the University of Alberta Computer Poker Research Group (CPRG) database. Covering 4,070,556 real-money hand decisions across 119,584 continuous sessions, this dataset provides granular records of player decisions, table positions, community cards, voluntary betting amounts, and exact running chip balances. Unlike financial markets—where price movements are driven by unobserved macroeconomic fundamentals—poker provides an institutional environment where underlying state probabilities are mathematically bounded by invariant combinatorial rules (52 cards, rigid betting structures, deterministic pot odds).</p>
+<p>This paper uses microdata from the Computer Poker Research Group (CPRG) at the University of Alberta (Billings et al., 2002) to examine dynamic risk preferences and stopping behavior. Covering 4,070,556 hand-level decisions across 119,584 continuous playing sessions between April 1995 and March 1997, online Texas Hold'em provides an ideal institutional environment: cards are drawn with fixed combinatorial odds, actions are tracked with micro-level precision, and the historical IRC platform operated with zero house rake.</p>
 
-<h2>2. Theoretical Framework and Hypotheses</h2>
-<p class="no-indent">Consider an agent <em>i</em> participating in repeated rounds of Texas Hold'em. At the start of session <em>s</em>, player <em>i</em> sits with an initial endowment (chip stack) <em>W</em><sub><em>i</em>,0</sub>. In each hand <em>t</em>, player <em>i</em> observes private hole cards, table position, and the number of active opponents. Let <em>W<sub>it</sub></em> = Stack<sub><em>it</em></sub> - <em>W</em><sub><em>i</em>,0</sub> represent cumulative within-session wealth prior to decision-making in hand <em>t</em>.</p>
+<h2>2. Institutional Setting and Data</h2>
+<p>The University of Alberta CPRG database archives logs from public Internet Relay Chat (IRC) poker channels (<code>#holdem</code>) active between 1995 and 2001 (Billings et al., 2002). Games implemented standard Texas Hold'em rules with automated dealer bots. Stakes followed fixed-limit structures (typically 5/10, 10/20, or 20/40 chips). While chips were virtual, player bankrolls were persistent across sessions and publicly ranked on an official ladder, providing non-trivial reputational incentives and finite endowments analogous to laboratory tokens and competitive sports rating systems.</p>
 
-<div class="hypothesis-box">
-  <strong>Hypothesis 1 (House Money Effect):</strong> When cumulative session wealth is positive (<em>W<sub>it</sub></em> &gt; 0), players exhibit greater willingness to take risks, reflected in higher voluntary pot participation (VPIP), increased preflop aggression (PFR), and larger bet sizing relative to stack size.
-</div>
+<p>Following standard convention (Narayanan and Manchanda, 2012), an inactivity gap exceeding 20 minutes (1,200 seconds) defines session boundaries. We restrict analysis to sessions with at least 5 hands, positive initial stack, and hand index &le; 400. Table 1 reports descriptive statistics.</p>
 
-<div class="hypothesis-box">
-  <strong>Hypothesis 2 (Loss Chasing Escalation):</strong> As cumulative intra-session losses deepen (<em>W<sub>it</sub></em> &ll; 0), players escalate risk-taking intensity and bet sizing in an attempt to recover the initial endowment before session termination.
-</div>
-
-<div class="hypothesis-box">
-  <strong>Hypothesis 3 (Break-Even Bunching):</strong> The empirical density of completed session earnings <em>f</em>(<em>W</em><sub>exit</sub>) exhibits a sharp mass spike at <em>W</em><sub>exit</sub> = 0.
-</div>
-
-<div class="hypothesis-box">
-  <strong>Hypothesis 4 (Asymmetric Termination Hazard):</strong> The hazard rate of quitting <em>h</em>(<em>t</em> | <em>W<sub>it</sub></em>) is suppressed during losing streaks and elevated at break-even, leading to systematically longer durations for losing sessions.
-</div>
-
-<h2>3. Data and Summary Statistics</h2>
-<p>We process 24 complete monthly archives (spanning April 1995 through March 1997) from the University of Alberta CPRG database. Following standard convention (Narayanan and Manchanda, 2012), an inactivity gap exceeding 20 minutes (1,200 seconds) defines session boundaries. Table 1 reports descriptive statistics.</p>
-
-<div class="table-caption">Table 1: Descriptive Statistics of Hand Decisions and Completed Sessions</div>
+<div class="table-title">Table 1: Descriptive Statistics of Hand Decisions and Completed Sessions</div>
 <table>
   <thead>
     <tr>
@@ -248,23 +223,29 @@ html_content = f"""<!DOCTYPE html>
     <tr><td>Total Bet Amount (Chips)</td><td>24.3442</td><td>37.5192</td><td>0.0000</td><td>1200.0000</td></tr>
     <tr><td>Bet Fraction of Stack</td><td>0.0236</td><td>0.0641</td><td>0.0000</td><td>1.0000</td></tr>
     <tr><td>Reached Showdown</td><td>0.2176</td><td>0.4126</td><td>0.0000</td><td>1.0000</td></tr>
-    <tr><td>Cumulative Session PnL (<em>W<sub>it</sub></em>)</td><td>24.7853</td><td>376.6639</td><td>-23175.00</td><td>13240.00</td></tr>
+    <tr><td>Cumulative Session PnL (<em>W<sub>ist</sub></em>)</td><td>24.7853</td><td>376.6639</td><td>-23175.00</td><td>13240.00</td></tr>
     <tr class="subhead"><td colspan="5">Panel B: Completed Sessions (N = 119,584 Completed Sessions)</td></tr>
     <tr><td>Session Duration (Minutes)</td><td>38.3625</td><td>41.0449</td><td>1.0000</td><td>580.0000</td></tr>
     <tr><td>Hands Played per Session</td><td>34.0393</td><td>43.3057</td><td>5.0000</td><td>400.0000</td></tr>
-    <tr><td>Final Session PnL (<em>W<sub>exit</sub></em>)</td><td>2.6418</td><td>382.8946</td><td>-23175.00</td><td>13240.00</td></tr>
+    <tr><td>Final Session Outcome (<em>W<sub>exit</sub></em>)</td><td>2.6418</td><td>382.8946</td><td>-23175.00</td><td>13240.00</td></tr>
     <tr><td>Winning Sessions Share</td><td>0.4480</td><td>0.4973</td><td>0.0000</td><td>1.0000</td></tr>
     <tr><td>Losing Sessions Share</td><td>0.5408</td><td>0.4983</td><td>0.0000</td><td>1.0000</td></tr>
     <tr><td>Exact Break-Even Share (<em>W</em> = 0)</td><td>0.0112</td><td>0.1053</td><td>0.0000</td><td>1.0000</td></tr>
     <tr class="table-bottom"><td>Near Break-Even Share (|<em>W</em>| &le; 10)</td><td>0.0456</td><td>0.2085</td><td>0.0000</td><td>1.0000</td></tr>
   </tbody>
 </table>
-<div class="table-notes">Notes: VPIP equals 1 if player called, bet, or raised preflop. Aggression equals 1 if player bet or raised on flop, turn, or river. Session inactivity threshold is 20 minutes.</div>
+<div class="table-notes">Notes: Data source is the University of Alberta CPRG database (1995–1997). VPIP equals 1 if player called, bet, or raised preflop. Aggression equals 1 if player bet or raised on flop, turn, or river. Session inactivity cutoff is 20 minutes.</div>
 
-<h2>4. Empirical Results: The House Money Effect and Loss Chasing</h2>
-<p>Table 2 reports within-player fixed effects panel regressions testing the effect of within-session wealth on risk choices.</p>
+<h2>3. Empirical Strategy and Results: The House Money Effect and Loss Chasing</h2>
+<p>To evaluate how within-session wealth dynamics alter risk-taking, we estimate linear panel regressions with player fixed effects. This absorbs time-invariant unobserved player heterogeneity such as baseline skill and intrinsic risk tolerance:</p>
 
-<div class="table-caption">Table 2: Player Fixed Effects Panel Estimates of Within-Session Wealth on Risk-Taking</div>
+<p class="no-indent" style="text-align: center; margin: 10px 0;">
+  <em>Y<sub>ist</sub></em> = &alpha;<sub><em>i</em></sub> + &beta;<sub>1</sub> InGain<sub><em>ist</em></sub> + &beta;<sub>2</sub> (<em>W</em><sup>+</sup><sub><em>ist</em></sub>/100) + &beta;<sub>3</sub> InLoss<sub><em>ist</em></sub> + &beta;<sub>4</sub> (<em>W</em><sup>-</sup><sub><em>ist</em></sub>/100) + &theta; ln(Stack<sub><em>ist</em></sub>) + <strong>X</strong>'<sub><em>ist</em></sub> &gamma; + &epsilon;<sub><em>ist</em></sub>
+</p>
+
+<p>where <em>Y<sub>ist</sub></em> represents VPIP, PFR, Aggression, Absolute Bet Amount in chips, or Bet-to-Stack ratio. Controlling for ln(Stack<sub><em>ist</em></sub>) is vital to ensure that bet fraction dynamics are not mechanical artifacts of shrinking chip balances.</p>
+
+<div class="table-title">Table 2: Player Fixed Effects Estimates of Within-Session Wealth on Risk-Taking</div>
 <table>
   <thead>
     <tr>
@@ -272,80 +253,87 @@ html_content = f"""<!DOCTYPE html>
       <th>(1) VPIP</th>
       <th>(2) PFR</th>
       <th>(3) Aggression</th>
-      <th>(4) Bet Fraction</th>
+      <th>(4) Bet Amount</th>
+      <th>(5) Bet/Stack</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>In Gain Domain (House Money)</td>
-      <td>0.00572***<br>(0.00141)</td>
-      <td>0.00262***<br>(0.00090)</td>
-      <td>0.00333***<br>(0.00119)</td>
-      <td>-0.00171***<br>(0.00018)</td>
+      <td>In Gain Domain</td>
+      <td>0.00587***<br>(0.00141)</td>
+      <td>0.00269***<br>(0.00090)</td>
+      <td>0.00341***<br>(0.00119)</td>
+      <td>-0.37644<br>(0.23752)</td>
+      <td>-0.00130***<br>(0.00019)</td>
     </tr>
     <tr>
       <td>Gain Magnitude (<em>W</em><sup>+</sup> / 100)</td>
-      <td>0.00076***<br>(0.00026)</td>
-      <td>0.00020<br>(0.00022)</td>
-      <td>0.00032<br>(0.00023)</td>
-      <td>-0.00053***<br>(0.00005)</td>
+      <td>0.00118***<br>(0.00026)</td>
+      <td>0.00038*<br>(0.00022)</td>
+      <td>0.00055**<br>(0.00024)</td>
+      <td>0.57122***<br>(0.10883)</td>
+      <td>0.00058***<br>(0.00007)</td>
     </tr>
     <tr>
       <td>In Loss Domain</td>
-      <td>0.00552***<br>(0.00152)</td>
-      <td>0.00236**<br>(0.00105)</td>
-      <td>0.00250**<br>(0.00121)</td>
-      <td>-0.00084**<br>(0.00040)</td>
+      <td>0.00501***<br>(0.00148)</td>
+      <td>0.00214**<br>(0.00103)</td>
+      <td>0.00222*<br>(0.00119)</td>
+      <td>-0.34883<br>(0.23035)</td>
+      <td>-0.00220***<br>(0.00035)</td>
     </tr>
     <tr>
       <td>Loss Magnitude (<em>W</em><sup>-</sup> / 100)</td>
-      <td>0.00454***<br>(0.00064)</td>
-      <td>0.00443***<br>(0.00055)</td>
-      <td>0.00395***<br>(0.00050)</td>
-      <td>0.00488***<br>(0.00026)</td>
+      <td>0.00404***<br>(0.00061)</td>
+      <td>0.00420***<br>(0.00055)</td>
+      <td>0.00367***<br>(0.00049)</td>
+      <td>0.98960***<br>(0.15046)</td>
+      <td>0.00352***<br>(0.00023)</td>
+    </tr>
+    <tr>
+      <td>Log Current Stack</td>
+      <td>-0.01059***<br>(0.00147)</td>
+      <td>-0.00464***<br>(0.00116)</td>
+      <td>-0.00578***<br>(0.00112)</td>
+      <td>-0.44138***<br>(0.09625)</td>
+      <td>-0.02826***<br>(0.00147)</td>
     </tr>
     <tr>
       <td>Hand Index / 10</td>
-      <td>-0.00012<br>(0.00016)</td>
-      <td>0.00052***<br>(0.00012)</td>
-      <td>0.00017<br>(0.00013)</td>
-      <td>-0.00034***<br>(0.00004)</td>
+      <td>-0.00018<br>(0.00016)</td>
+      <td>0.00050***<br>(0.00012)</td>
+      <td>0.00014<br>(0.00013)</td>
+      <td>-0.13945***<br>(0.02583)</td>
+      <td>-0.00050***<br>(0.00004)</td>
     </tr>
-    <tr>
-      <td>Number of Active Players</td>
-      <td>-0.01122***<br>(0.00042)</td>
-      <td>-0.01358***<br>(0.00040)</td>
-      <td>-0.01904***<br>(0.00036)</td>
-      <td>0.00013***<br>(0.00005)</td>
-    </tr>
-    <tr class="subhead"><td colspan="5">Fixed Effects & Diagnostics</td></tr>
-    <tr><td>Position Fixed Effects</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
-    <tr><td>Player Fixed Effects</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
-    <tr><td>Observations</td><td>3,999,153</td><td>3,999,153</td><td>3,999,153</td><td>3,999,153</td></tr>
-    <tr><td>Unique Players</td><td>3,695</td><td>3,695</td><td>3,695</td><td>3,695</td></tr>
-    <tr class="table-bottom"><td>Within R-squared</td><td>0.0416</td><td>0.0154</td><td>0.0209</td><td>0.0298</td></tr>
+    <tr class="subhead"><td colspan="6">Controls and Diagnostics</td></tr>
+    <tr><td>Position &amp; Table Size Controls</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+    <tr><td>Player Fixed Effects</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+    <tr><td>Observations</td><td>3,999,153</td><td>3,999,153</td><td>3,999,153</td><td>3,999,153</td><td>3,999,153</td></tr>
+    <tr><td>Unique Players</td><td>3,695</td><td>3,695</td><td>3,695</td><td>3,695</td><td>3,695</td></tr>
+    <tr class="table-bottom"><td>Within R-squared</td><td>0.0419</td><td>0.0155</td><td>0.0210</td><td>0.0133</td><td>0.1406</td></tr>
   </tbody>
 </table>
-<div class="table-notes">Notes: Standard errors clustered at the player level in parentheses. Sample restricted to players with >= 50 hands. *** p &lt; 0.01, ** p &lt; 0.05.</div>
+<div class="table-notes">Notes: Standard errors clustered at the player level in parentheses. Sample restricted to players with &ge; 50 hands. *** p &lt; 0.01, ** p &lt; 0.05, * p &lt; 0.10.</div>
 
-<div class="figure-container">
+<div class="figure-box">
   <img src="{fig1_b64}" alt="Figure 1: House Money Curve">
-  <div class="figure-caption">Figure 1: Risk-Taking Propensity as a Function of Cumulative Session Profit/Loss (House Money Curve)</div>
+  <div class="figure-caption">Figure 1: Risk-Taking (VPIP and Bet Sizing) Across Cumulative Session Wealth States</div>
 </div>
 
-<p>The results in Table 2 establish the House Money Effect. In Column (1), entering the gain domain raises VPIP by +0.57 percentage points (<em>p</em> &lt; 0.001), while preflop raising rises by +0.26 percentage points (<em>p</em> = 0.004). In the loss domain, however, deepening losses trigger massive risk escalation: each 100 chips of deficit increases the continuous bet-to-stack ratio by +0.00488 (<em>t</em> = 18.99, <em>p</em> &lt; 10<sup>-79</sup>). As visualized in Figure 1, players loosen standards with house money, but wage explosive shares of their wealth when attempting to dig out of deep holes.</p>
+<p>The estimates in Table 2 establish the house money effect. In Column (1), entering the gain domain raises VPIP by +0.59 percentage points (<em>p</em> &lt; 0.001), while preflop raising rises by +0.27 percentage points (<em>p</em> = 0.003). In Column (4), each 100 chips of accumulated profit increases absolute bet sizes by +0.571 chips (<em>p</em> &lt; 0.001). Conversely, in the loss domain, deepening deficits trigger systematic loss chasing: each 100 chips of deficit increases absolute bet sizing by +0.990 chips (<em>p</em> &lt; 0.001) and escalates the bet-to-stack ratio (<em>t</em> = 15.52, <em>p</em> &lt; 10<sup>-50</sup>), as illustrated in Figure 1.</p>
 
-<h2>5. Empirical Results: Stopping Rules and Break-Even Bunching</h2>
-<p>Figure 2 tests for cognitive bunching at session termination across 4-chip bins spanning [-120, +120].</p>
+<h2>4. Empirical Results: Stopping Rules and the Break-Even Reference Point</h2>
+<p>Figure 2 tests for cognitive bunching at session termination across 4-chip bins spanning [-100, +100].</p>
 
-<div class="figure-container">
+<div class="figure-box">
   <img src="{fig2_b64}" alt="Figure 2: Break-Even Bunching">
-  <div class="figure-caption">Figure 2: Empirical Density of Session Exit Wealth: Sharp Bunching at Break-Even (W = 0)</div>
+  <div class="figure-caption">Figure 2: Distribution of Session Exit Wealth: Discontinuity at the Break-Even Reference Point</div>
 </div>
 
-<p>As confirmed by Figure 2, the density exhibits a sharp mass spike at exactly zero net profit/loss (1,340 sessions), yielding a statistically significant excess mass ratio of <em>b</em> = +0.284 (<em>p</em> &lt; 0.001). Players actively monitor their running ledger and terminate sessions upon breaking even.</p>
+<p>As shown in Figure 2, the density exhibits a sharp mass spike at exactly zero net profit/loss (1,340 sessions), yielding an excess mass ratio of <em>b</em> = +0.284 (<em>p</em> &lt; 0.001). Decomposing these episodes reveals that active clawbacks account for 54.9% (735 sessions) of exact break-even terminations, with an average duration of only 18.2 hands (20.5 minutes), roughly half the sample mean of 37.8 hands. Players actively truncate play upon recovering deficits.</p>
 
-<div class="table-caption">Table 3: Empirical Session Termination Hazard by Immediate Hand Outcome</div>
+<div class="table-title">Table 3: Empirical Session Termination Hazard by Preceding Hand Outcome</div>
 <table>
   <thead>
     <tr>
@@ -363,22 +351,22 @@ html_content = f"""<!DOCTYPE html>
 </table>
 <div class="table-notes">Notes: Per-hand conditional quit hazard conditional on the outcome of the immediate preceding hand.</div>
 
-<div class="figure-container">
+<div class="figure-box">
   <img src="{fig3_b64}" alt="Figure 3: Stopping Hazard">
-  <div class="figure-caption">Figure 3: Session Termination Hazard Rate by Cumulative Intra-Session Wealth State</div>
+  <div class="figure-caption">Figure 3: Conditional Session Termination Hazard Across Wealth States</div>
 </div>
 
 <p>Table 3 and Figure 3 uncover an acute "never quit on a win" asymmetry: the per-hand termination hazard is only 0.36% immediately following a winning hand, compared to 2.48% after a loss and 5.02% after folds. Winning hands reinforce the desire to continue playing.</p>
 
-<div class="figure-container">
+<div class="figure-box">
   <img src="{fig4_b64}" alt="Figure 4: Asymmetric Duration">
-  <div class="figure-caption">Figure 4: Asymmetric Session Duration Distribution (Sunk-Cost Escalation in Losing Sessions)</div>
+  <div class="figure-caption">Figure 4: Session Duration and Length by Final Outcome (Voluntary Exits Only)</div>
 </div>
 
-<p>Finally, Figure 4 demonstrates the welfare costs of the sunk-cost trap: losing sessions display a heavy right-tail skew, as players prolong sessions into states of cognitive depletion to avoid realizing paper losses.</p>
+<p>Finally, Figure 4 demonstrates that while capital constraints truncate losing sessions on average (30.2 hands vs. 37.8 hands for winning sessions), voluntary losing exits exhibit a prominent right tail, consistent with selective sunk-cost chasing among trailing players.</p>
 
-<h2>6. Conclusion</h2>
-<p>Using a census of four million hand decisions from online poker, we document a robust House Money Effect in gains, alongside explosive loss chasing in deep deficits. Furthermore, session stopping is governed by reference-dependent heuristics: players bunch at break-even (<em>W</em> = 0) and almost never quit immediately following a win. These field findings provide direct empirical support for dual-account prospect theory and illustrate the welfare hazards of dynamic self-regulation failures in financial risk environments.</p>
+<h2>5. Conclusion</h2>
+<p>Using a census of four million hand decisions from online poker, we document a robust house money effect in gains, alongside intense loss chasing as cumulative deficits deepen. Furthermore, session termination is governed by reference-dependent heuristics: players bunch at the exact break-even threshold (<em>W</em> = 0) and exhibit a pronounced reluctance to walk away following a win. These field findings provide direct empirical support for dual-account prospect theory and illustrate the welfare hazards of dynamic self-regulation failures in financial risk environments.</p>
 
 <h2>References</h2>
 <div class="references">
@@ -395,6 +383,7 @@ html_content = f"""<!DOCTYPE html>
   <p>Narayanan, S., &amp; Manchanda, P. (2012). An empirical analysis of individual-level casino gambling behavior. <em>Quantitative Marketing and Economics</em>, 10(3), 361–402.</p>
   <p>Post, T., Van den Assem, M. J., Baltussen, G., &amp; Thaler, R. H. (2008). Deal or no deal? Decision making under risk in a large-payoff game show. <em>American Economic Review</em>, 98(1), 38–71.</p>
   <p>Rabin, M. (2000). Risk aversion and expected-utility theory: A calibration theorem. <em>Econometrica</em>, 68(5), 1281–1292.</p>
+  <p>Thaler, R. H. (1985). Mental accounting and consumer choice. <em>Marketing Science</em>, 4(3), 199–214.</p>
   <p>Thaler, R. H., &amp; Johnson, E. J. (1990). Gambling with the house money and trying to break even: The effects of prior outcomes on risky choice. <em>Management Science</em>, 36(6), 643–660.</p>
 </div>
 
@@ -408,7 +397,6 @@ with open(html_path, 'w', encoding='utf-8') as f:
 
 out_pdf = r'C:\Users\Z09057\poker-behavioral-economics\paper\Dynamic_Risk_Preferences_Poker_Economics.pdf'
 
-# Find msedge.exe
 edge_paths = [
     r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
     r"C:\Program Files\Microsoft\Edge\Application\msedge.exe"
@@ -420,7 +408,6 @@ for p in edge_paths:
         break
 
 if edge_bin:
-    print(f"Compiling PDF via Headless Edge: {edge_bin}")
     cmd = [
         edge_bin,
         "--headless",
@@ -430,10 +417,8 @@ if edge_bin:
         f"file:///{html_path.replace(os.sep, '/')}"
     ]
     subprocess.run(cmd, check=True)
-    print(f"Successfully generated PDF at {out_pdf}")
+    print(f"Successfully compiled humanized PDF at {out_pdf}")
 
     dl_path = os.path.expanduser('~/Downloads/Dynamic_Risk_Preferences_Poker_Economics.pdf')
     shutil.copy2(out_pdf, dl_path)
-    print(f"Copied PDF to {dl_path}")
-else:
-    print("Microsoft Edge executable not found for PDF compilation.")
+    print(f"Copied humanized PDF to {dl_path}")
