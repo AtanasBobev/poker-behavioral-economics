@@ -1,0 +1,32 @@
+{
+  "total_sessions": 119584,
+  "bunching": {
+    "b_ratio": -0.043285805922512625,
+    "excess_mass": -203.91578644955644,
+    "actual_count": 4507,
+    "counterfactual_count": 4710.915786449556
+  },
+  "duration": {
+    "mean_hands_win": 37.49757245294293,
+    "mean_hands_loss": 30.996983852007673,
+    "mean_dur_win": 41.77548924409919,
+    "mean_dur_loss": 35.56940233867475,
+    "loss_delta_hands": -6.500588600935259,
+    "loss_delta_dur": -6.206086905424442,
+    "reg_loss_hands_coef": -6.045115566395953,
+    "reg_loss_hands_se": 0.23434315364088176,
+    "reg_loss_hands_p": 9.832955459812138e-147,
+    "reg_loss_dur_coef": -5.723720405292119,
+    "reg_loss_dur_se": 0.2288979360198401,
+    "reg_loss_dur_p": 5.3191735341358065e-138
+  },
+  "hazard": {
+    "near_zero_coef": -0.32244494692538783,
+    "near_zero_se": 0.04448977945840247,
+    "near_zero_p": 4.241634316166446e-13,
+    "in_gain_coef": 1.4781644754146996,
+    "in_gain_se": 0.08686739502230091,
+    "in_loss_coef": 1.5604473947988569,
+    "in_loss_se": 0.08637079895207857
+  }
+}

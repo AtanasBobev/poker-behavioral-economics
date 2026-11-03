@@ -1,0 +1,12 @@
+node_modules/
+dist/
+*.log
+.DS_Store
+poker_raw/
+poker_extracted/
+poker_temp/
+*.part
+__pycache__/
+*.pyc
+data/*.csv
+paper/manuscript_print.html

@@ -1,0 +1,33 @@
+{
+  "name": "poker-behavioral-economics",
+  "version": "1.0.0",
+  "description": "High-performance TypeScript pipeline and econometric estimation suite for analyzing the House Money Effect, loss chasing, and asymmetric session stopping rules in online poker.",
+  "main": "dist/stream-pipeline.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/stream-pipeline.js",
+    "typecheck": "tsc --noEmit",
+    "analyze:house-money": "python analysis/01_house_money_panel.py",
+    "analyze:stopping": "python analysis/02_bunching_hazard_stopping.py",
+    "figures": "python analysis/generate_figures.py",
+    "paper:docx": "python analysis/build_paper_docx.py",
+    "paper:pdf": "python analysis/build_paper_pdf.py"
+  },
+  "keywords": [
+    "behavioral-economics",
+    "house-money-effect",
+    "prospect-theory",
+    "loss-aversion",
+    "stopping-rules",
+    "bunching",
+    "hazard-models",
+    "poker",
+    "typescript"
+  ],
+  "author": "Atanas Bobev",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.19.43",
+    "typescript": "^5.9.3"
+  }
+}
