@@ -51,17 +51,10 @@ def create_document():
     # Author
     p_auth = doc.add_paragraph()
     p_auth.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_auth.paragraph_format.space_after = Pt(3)
+    p_auth.paragraph_format.space_after = Pt(16)
     r_auth = p_auth.add_run("Atanas Bobev")
     r_auth.bold = True
     r_auth.font.size = Pt(12)
-
-    p_affil = doc.add_paragraph()
-    p_affil.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_affil.paragraph_format.space_after = Pt(16)
-    r_affil = p_affil.add_run("Department of Economics, American University in Bulgaria\nCorrespondence: amb230@aubg.edu")
-    r_affil.italic = True
-    r_affil.font.size = Pt(10)
 
     # Abstract Box
     p_abs_h = doc.add_paragraph()

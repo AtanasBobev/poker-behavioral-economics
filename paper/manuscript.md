@@ -1,8 +1,6 @@
 # Dynamic Risk Preferences, Loss Chasing, and Reference-Dependent Stopping in Repeated Contests: Field Evidence from Online Poker
 
-**Atanas Bobev**  
-*Department of Economics, American University in Bulgaria*  
-*Contact: amb230@aubg.edu*
+**Atanas Bobev**
 
 ---
 
