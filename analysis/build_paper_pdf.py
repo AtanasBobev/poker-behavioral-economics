@@ -60,14 +60,8 @@ html_content = f"""<!DOCTYPE html>
     text-align: center;
     font-size: 11.5pt;
     font-weight: bold;
-    margin-bottom: 2px;
-  }}
-  .affiliation {{
-    text-align: center;
-    font-size: 9.5pt;
-    font-style: italic;
-    color: #333333;
-    margin-bottom: 20px;
+    margin-top: 6px;
+    margin-bottom: 28px;
   }}
   .abstract-container {{
     margin: 0 20px 22px 20px;

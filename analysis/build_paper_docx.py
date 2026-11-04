@@ -51,7 +51,8 @@ def create_document():
     # Author
     p_auth = doc.add_paragraph()
     p_auth.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_auth.paragraph_format.space_after = Pt(16)
+    p_auth.paragraph_format.space_before = Pt(4)
+    p_auth.paragraph_format.space_after = Pt(28)
     r_auth = p_auth.add_run("Atanas Bobev")
     r_auth.bold = True
     r_auth.font.size = Pt(12)
