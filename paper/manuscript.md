@@ -44,7 +44,7 @@ Fourth, we document significant **bunching at the break-even reference point**. 
 ## 2. Institutional Setting and Data
 
 ### 2.1 The CPRG IRC Poker Environment
-The University of Alberta CPRG database archives logs from public Internet Relay Chat (IRC) poker channels (`#holdem`) active between 1995 and 2001 (Billings et al., 2002). The games implemented standard Texas Hold'em rules with automated dealer bots managing the deck, blinds, and pots. 
+The University of Alberta CPRG database archives logs from public Internet Relay Chat (IRC) poker channels (`#holdem`) active between 1995 and 2001 (Billings et al., 2002; Maurer, 1995-2001). The underlying hands were systematically recorded by Michael Maurer using the automated `Observer` program on the IRC poker server originally created by Todd Mummert and Greg Reynolds. The games implemented standard Texas Hold'em rules with automated dealer bots managing the deck, blinds, and pots. 
 
 Stakes followed fixed-limit structures (typically 5/10, 10/20, or 20/40 chips), with predetermined small and big blinds. In each betting round, players could fold, call, or raise up to the table limit. While chips were virtual ("etherbucks"), player bankrolls were persistent across sessions and publicly ranked on an official ladder. Consequently, participants faced non-trivial reputational incentives, finite endowments, and competitive tournament dynamics, closely mirroring laboratory token experiments and online competitive rating systems (e.g., chess or e-sports).
 
@@ -298,6 +298,7 @@ Using a census of four million hand decisions from online poker, this paper prov
 - Farber, H. S. (2015). Why you can't find a taxi in the rain, and other labor supply puzzles. *Quarterly Journal of Economics*, 130(4), 1975-2026.
 - Imas, A. (2016). The realization effect: A test of how realized versus paper outcomes affect risk taking. *American Economic Review*, 106(8), 2086-2109.
 - Kahneman, D., & Tversky, A. (1979). Prospect theory: An analysis of decision under risk. *Econometrica*, 47(2), 263-291.
+- Maurer, M. (1995-2001). The IRC Poker Database. Logged via the Observer program. Hosted and maintained by the Computer Poker Research Group, University of Alberta. URL: https://poker.cs.ualberta.ca/irc_poker_database.html.
 - McCrary, J. (2008). Manipulation of the running variable in the regression discontinuity design: A density test. *Journal of Econometrics*, 142(2), 698-714.
 - Narayanan, S., & Manchanda, P. (2012). An empirical analysis of individual-level casino gambling behavior. *Quantitative Marketing and Economics*, 10(3), 361-402.
 - Post, T., Van den Assem, M. J., Baltussen, G., & Thaler, R. H. (2008). Deal or no deal? Decision making under risk in a large-payoff game show. *American Economic Review*, 98(1), 38-71.

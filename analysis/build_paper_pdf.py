@@ -372,6 +372,7 @@ html_content = f"""<!DOCTYPE html>
   <p>Farber, H. S. (2015). Why you can't find a taxi in the rain, and other labor supply puzzles. <em>Quarterly Journal of Economics</em>, 130(4), 1975-2026.</p>
   <p>Imas, A. (2016). The realization effect: A test of how realized versus paper outcomes affect risk taking. <em>American Economic Review</em>, 106(8), 2086-2109.</p>
   <p>Kahneman, D., &amp; Tversky, A. (1979). Prospect theory: An analysis of decision under risk. <em>Econometrica</em>, 47(2), 263-291.</p>
+  <p>Maurer, M. (1995-2001). The IRC Poker Database. Logged via the Observer program. Hosted and maintained by the Computer Poker Research Group, University of Alberta. URL: https://poker.cs.ualberta.ca/irc_poker_database.html.</p>
   <p>McCrary, J. (2008). Manipulation of the running variable in the regression discontinuity design: A density test. <em>Journal of Econometrics</em>, 142(2), 698-714.</p>
   <p>Narayanan, S., &amp; Manchanda, P. (2012). An empirical analysis of individual-level casino gambling behavior. <em>Quantitative Marketing and Economics</em>, 10(3), 361-402.</p>
   <p>Post, T., Van den Assem, M. J., Baltussen, G., &amp; Thaler, R. H. (2008). Deal or no deal? Decision making under risk in a large-payoff game show. <em>American Economic Review</em>, 98(1), 38-71.</p>
