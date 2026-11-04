@@ -168,7 +168,7 @@ def plot_figure4_duration(df_sess, out_dir):
     win_sess = df_vol[df_vol['is_winning'] == 1]
     loss_sess = df_vol[df_vol['is_losing'] == 1]
 
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(9.5, 4.0))
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(9.5, 3.8))
 
     # Panel A: Cumulative Distribution of Duration
     win_dur = np.sort(win_sess['duration_minutes'])
@@ -192,10 +192,9 @@ def plot_figure4_duration(df_sess, out_dir):
     ax2.grid(True, alpha=0.4)
     ax2.legend(loc='upper right', frameon=False)
 
-    plt.suptitle('Figure 4: Session Duration and Length by Final Outcome (Voluntary Exits Only)', fontsize=11.5, y=1.02)
     plt.tight_layout()
-    fig.savefig(os.path.join(out_dir, 'fig4_duration_escalation.png'))
-    fig.savefig(os.path.join(out_dir, 'fig4_duration_escalation.pdf'))
+    fig.savefig(os.path.join(out_dir, 'fig4_duration_escalation.png'), bbox_inches='tight', dpi=300)
+    fig.savefig(os.path.join(out_dir, 'fig4_duration_escalation.pdf'), bbox_inches='tight')
     plt.close()
 
 def main():

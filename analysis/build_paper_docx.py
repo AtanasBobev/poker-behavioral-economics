@@ -70,7 +70,7 @@ def create_document():
     r_abs = p_abs.add_run(
         "We examine how dynamic within-session wealth fluctuations alter risk-taking and session termination decisions "
         "in repeated contests. Analyzing 4,070,556 hand-level decisions across 119,584 completed sessions from the University "
-        "of Alberta Computer Poker Research Group archive (1995–1997), we exploit continuous bankroll tracking within an environment "
+        "of Alberta Computer Poker Research Group archive (1995-1997), we exploit continuous bankroll tracking within an environment "
         "where objective probabilities are governed by invariant combinatorial rules. Controlling for player fixed effects, table stakes, "
         "position, and time-on-task, we identify two distinct behavioral regimes. In the gain domain, competitors exhibit a house money effect: "
         "accumulated profits increase voluntary pot entry (VPIP, +0.59 percentage points, p < 0.001), preflop raising (+0.27 percentage points, "
@@ -110,7 +110,7 @@ def create_document():
          "Simultaneously, dynamic risk environments require agents to make endogenous stopping decisions: deciding when to cease participation. Analogous "
          "to daily labor supply choices among independent contractors (Camerer et al., 1997; Farber, 2005, 2008, 2015), repeated contest participants must "
          "weigh the marginal utility of continuation against physical or cognitive fatigue. When agents evaluate performance relative to an intra-session "
-         "reference point—most saliently, breaking even (W = 0)—stopping probabilities should exhibit sharp structural discontinuities around the reference threshold.\n\n"
+         "reference point-most saliently, breaking even (W = 0)-stopping probabilities should exhibit sharp structural discontinuities around the reference threshold.\n\n"
          "This paper uses microdata from the Computer Poker Research Group (CPRG) at the University of Alberta (Billings et al., 2002) to examine dynamic risk "
          "preferences and stopping behavior. Covering 4,070,556 hand-level decisions across 119,584 continuous playing sessions between April 1995 and March 1997, "
          "online Texas Hold'em provides an ideal institutional environment: cards are drawn with fixed combinatorial odds, actions are tracked with micro-level "
@@ -318,21 +318,21 @@ def create_document():
     r_ref_h.font.size = Pt(12)
 
     refs = [
-        "Barberis, N. (2012). A model of casino gambling. Management Science, 58(1), 35–51.",
-        "Billings, D., Davidson, A., Schaeffer, J., & Szafron, D. (2002). The challenge of poker. Artificial Intelligence, 134(1–2), 201–240.",
-        "Camerer, C., Babcock, L., Loewenstein, G., & Thaler, R. (1997). Labor supply of New York City cabdrivers: One day at a time. Quarterly Journal of Economics, 112(2), 407–441.",
-        "Chetty, R., Friedman, J. N., Olsen, T., & Pistaferri, L. (2011). Adjustment costs, firm responses, and micro vs. macro labor supply elasticities: Evidence from Danish tax records. Quarterly Journal of Economics, 126(2), 749–804.",
-        "Farber, H. S. (2005). Is labor supply of taxi drivers really backward-bending? Empirical evidence. Journal of Political Economy, 113(4), 857–882.",
-        "Farber, H. S. (2008). Reference-dependent preferences and labor supply: The case of New York City taxi drivers. American Economic Review, 98(3), 1069–1082.",
-        "Farber, H. S. (2015). Why you can't find a taxi in the rain, and other labor supply puzzles. Quarterly Journal of Economics, 130(4), 1975–2026.",
-        "Imas, A. (2016). The realization effect: A test of how realized versus paper outcomes affect risk taking. American Economic Review, 106(8), 2086–2109.",
-        "Kahneman, D., & Tversky, A. (1979). Prospect theory: An analysis of decision under risk. Econometrica, 47(2), 263–291.",
-        "McCrary, J. (2008). Manipulation of the running variable in the regression discontinuity design: A density test. Journal of Econometrics, 142(2), 698–714.",
-        "Narayanan, S., & Manchanda, P. (2012). An empirical analysis of individual-level casino gambling behavior. Quantitative Marketing and Economics, 10(3), 361–402.",
-        "Post, T., Van den Assem, M. J., Baltussen, G., & Thaler, R. H. (2008). Deal or no deal? Decision making under risk in a large-payoff game show. American Economic Review, 98(1), 38–71.",
-        "Rabin, M. (2000). Risk aversion and expected-utility theory: A calibration theorem. Econometrica, 68(5), 1281–1292.",
-        "Thaler, R. H. (1985). Mental accounting and consumer choice. Marketing Science, 4(3), 199–214.",
-        "Thaler, R. H., & Johnson, E. J. (1990). Gambling with the house money and trying to break even: The effects of prior outcomes on risky choice. Management Science, 36(6), 643–660."
+        "Barberis, N. (2012). A model of casino gambling. Management Science, 58(1), 35-51.",
+        "Billings, D., Davidson, A., Schaeffer, J., & Szafron, D. (2002). The challenge of poker. Artificial Intelligence, 134(1-2), 201-240.",
+        "Camerer, C., Babcock, L., Loewenstein, G., & Thaler, R. (1997). Labor supply of New York City cabdrivers: One day at a time. Quarterly Journal of Economics, 112(2), 407-441.",
+        "Chetty, R., Friedman, J. N., Olsen, T., & Pistaferri, L. (2011). Adjustment costs, firm responses, and micro vs. macro labor supply elasticities: Evidence from Danish tax records. Quarterly Journal of Economics, 126(2), 749-804.",
+        "Farber, H. S. (2005). Is labor supply of taxi drivers really backward-bending? Empirical evidence. Journal of Political Economy, 113(4), 857-882.",
+        "Farber, H. S. (2008). Reference-dependent preferences and labor supply: The case of New York City taxi drivers. American Economic Review, 98(3), 1069-1082.",
+        "Farber, H. S. (2015). Why you can't find a taxi in the rain, and other labor supply puzzles. Quarterly Journal of Economics, 130(4), 1975-2026.",
+        "Imas, A. (2016). The realization effect: A test of how realized versus paper outcomes affect risk taking. American Economic Review, 106(8), 2086-2109.",
+        "Kahneman, D., & Tversky, A. (1979). Prospect theory: An analysis of decision under risk. Econometrica, 47(2), 263-291.",
+        "McCrary, J. (2008). Manipulation of the running variable in the regression discontinuity design: A density test. Journal of Econometrics, 142(2), 698-714.",
+        "Narayanan, S., & Manchanda, P. (2012). An empirical analysis of individual-level casino gambling behavior. Quantitative Marketing and Economics, 10(3), 361-402.",
+        "Post, T., Van den Assem, M. J., Baltussen, G., & Thaler, R. H. (2008). Deal or no deal? Decision making under risk in a large-payoff game show. American Economic Review, 98(1), 38-71.",
+        "Rabin, M. (2000). Risk aversion and expected-utility theory: A calibration theorem. Econometrica, 68(5), 1281-1292.",
+        "Thaler, R. H. (1985). Mental accounting and consumer choice. Marketing Science, 4(3), 199-214.",
+        "Thaler, R. H., & Johnson, E. J. (1990). Gambling with the house money and trying to break even: The effects of prior outcomes on risky choice. Management Science, 36(6), 643-660."
     ]
 
     for ref in refs:

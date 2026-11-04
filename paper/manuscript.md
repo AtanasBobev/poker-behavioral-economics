@@ -5,7 +5,7 @@
 ---
 
 ### Abstract
-We examine how dynamic within-session wealth fluctuations alter risk-taking and session termination decisions in repeated contests. Analyzing 4,070,556 hand-level decisions across 119,584 completed sessions from the University of Alberta Computer Poker Research Group archive (1995–1997), we exploit continuous bankroll tracking within an environment where objective probabilities are governed by invariant combinatorial rules. Controlling for player fixed effects, table stakes, position, and time-on-task, we identify two distinct behavioral regimes. In the gain domain, competitors exhibit a house money effect: accumulated profits increase voluntary pot entry (VPIP, $+0.59$ percentage points, $p < 0.001$), preflop raising ($+0.27$ percentage points, $p = 0.003$), and absolute wager sizes ($+0.57$ chips per 100 chips gained, $p < 0.001$). In the loss domain, increasing cumulative deficits trigger systematic loss chasing: holding current stack size constant, each 100 chips of deficit increases absolute bet sizes by $+0.99$ chips ($p < 0.001$) and escalates the bet-to-stack ratio ($t = 15.52, p < 10^{-50}$). At the session level, termination choices exhibit sharp reference dependence. Players display an acute "never quit on a win" asymmetry: the per-hand exit hazard is 0.36% immediately following a winning hand, compared to 2.48% after a loss and 5.02% after uncontested folds. Furthermore, 1,340 sessions terminate at exact net break-even ($W = 0$), with active round-trip clawbacks accounting for 54.9% of these exits. While capital constraints truncate losing sessions on average, surviving losing sessions display pronounced right-tail persistence, consistent with selective sunk-cost chasing. Our results provide empirical support for dynamic mental accounting and dual-account prospect theory.
+We examine how dynamic within-session wealth fluctuations alter risk-taking and session termination decisions in repeated contests. Analyzing 4,070,556 hand-level decisions across 119,584 completed sessions from the University of Alberta Computer Poker Research Group archive (1995-1997), we exploit continuous bankroll tracking within an environment where objective probabilities are governed by invariant combinatorial rules. Controlling for player fixed effects, table stakes, position, and time-on-task, we identify two distinct behavioral regimes. In the gain domain, competitors exhibit a house money effect: accumulated profits increase voluntary pot entry (VPIP, $+0.59$ percentage points, $p < 0.001$), preflop raising ($+0.27$ percentage points, $p = 0.003$), and absolute wager sizes ($+0.57$ chips per 100 chips gained, $p < 0.001$). In the loss domain, increasing cumulative deficits trigger systematic loss chasing: holding current stack size constant, each 100 chips of deficit increases absolute bet sizes by $+0.99$ chips ($p < 0.001$) and escalates the bet-to-stack ratio ($t = 15.52, p < 10^{-50}$). At the session level, termination choices exhibit sharp reference dependence. Players display an acute "never quit on a win" asymmetry: the per-hand exit hazard is 0.36% immediately following a winning hand, compared to 2.48% after a loss and 5.02% after uncontested folds. Furthermore, 1,340 sessions terminate at exact net break-even ($W = 0$), with active round-trip clawbacks accounting for 54.9% of these exits. While capital constraints truncate losing sessions on average, surviving losing sessions display pronounced right-tail persistence, consistent with selective sunk-cost chasing. Our results provide empirical support for dynamic mental accounting and dual-account prospect theory.
 
 **Keywords:** Reference-dependent preferences, House money effect, Loss chasing, Stopping rules, Dynamic labor supply, Contest theory, Field data.  
 **JEL Classifications:** D81, D91, C93, G41.
@@ -18,7 +18,7 @@ Standard neoclassical expected utility theory posits that risk preferences are d
 
 Two primary behavioral frameworks explain such path dependence. First, under mental accounting (Thaler, 1985; Thaler and Johnson, 1990), individuals segregate recent gains from baseline wealth. Prior earnings are treated as "house money," attenuating the perceived disutility of subsequent losses and encouraging risk-taking. Second, prospect theory (Kahneman and Tversky, 1979) specifies an S-shaped value function characterized by loss aversion ($\lambda > 1$) and convexity in the negative domain. When individuals accumulate paper losses that have not yet been formally realized, diminishing sensitivity can induce risk-seeking gambles aimed at recovering the initial endowment (the break-even effect; Imas, 2016).
 
-Simultaneously, dynamic risk environments require agents to make endogenous *stopping decisions*: deciding when to cease participation. Analogous to daily labor supply choices among independent contractors (Camerer et al., 1997; Farber, 2005, 2008, 2015), repeated contest participants must weigh the marginal utility of continuation against physical or cognitive fatigue. When agents evaluate performance relative to an intra-session reference point—most saliently, breaking even ($W = 0$)—stopping probabilities should exhibit sharp structural discontinuities around the reference threshold.
+Simultaneously, dynamic risk environments require agents to make endogenous *stopping decisions*: deciding when to cease participation. Analogous to daily labor supply choices among independent contractors (Camerer et al., 1997; Farber, 2005, 2008, 2015), repeated contest participants must weigh the marginal utility of continuation against physical or cognitive fatigue. When agents evaluate performance relative to an intra-session reference point-most saliently, breaking even ($W = 0$)-stopping probabilities should exhibit sharp structural discontinuities around the reference threshold.
 
 Testing these theories in field environments involves substantial identification challenges. In financial markets, risk choices are confounded by shifting macroeconomic fundamentals, unobserved beliefs, and endogenous liquidity constraints. In casino or sports betting settings, house edges, opaque bookmaker commissions, and heterogeneous event probabilities complicate the measurement of underlying decision rules.
 
@@ -37,7 +37,7 @@ Second, in the loss domain, we document pronounced **loss chasing**. Rather than
 
 Third, session quitting decisions exhibit an acute **outcome asymmetry**. The conditional per-hand probability of quitting immediately after a winning hand is 0.36%, compared to 2.48% after a loss and 5.02% following an uncontested fold. Players virtually never leave the contest following a win, indicating that recent success acts as a potent continuation stimulus.
 
-Fourth, we document significant **bunching at the break-even reference point**. Exactly 1,340 sessions terminate at $W_{exit} = 0$. Decomposing these episodes, active clawbacks—sessions where a player was underwater, recovered to zero, and immediately quit—comprise 54.9% (735 sessions) of the total, while active givebacks comprise 14.0% (188 sessions). The average duration of exact break-even sessions is 18.2 hands (20.5 minutes), roughly half the sample average of 37.8 hands, demonstrating that players actively terminate sessions early to lock in break-even outcomes. Finally, while capital constraints truncate losing sessions on average (30.2 hands vs. 37.8 hands for winning sessions), surviving losing sessions exhibit excess right-tail persistence, reflecting selective sunk-cost chasing.
+Fourth, we document significant **bunching at the break-even reference point**. Exactly 1,340 sessions terminate at $W_{exit} = 0$. Decomposing these episodes, active clawbacks-sessions where a player was underwater, recovered to zero, and immediately quit-comprise 54.9% (735 sessions) of the total, while active givebacks comprise 14.0% (188 sessions). The average duration of exact break-even sessions is 18.2 hands (20.5 minutes), roughly half the sample average of 37.8 hands, demonstrating that players actively terminate sessions early to lock in break-even outcomes. Finally, while capital constraints truncate losing sessions on average (30.2 hands vs. 37.8 hands for winning sessions), surviving losing sessions exhibit excess right-tail persistence, reflecting selective sunk-cost chasing.
 
 ---
 
@@ -95,7 +95,7 @@ Losing Sessions Share                  0.5408        0.4983       0.0000       1
 Exact Break-Even Share ($W=0$)         0.0112        0.1053       0.0000       1.0000
 Near Break-Even Share ($|W| \le 10$)   0.0456        0.2085       0.0000       1.0000
 ========================================================================================
-Notes: Data source is the University of Alberta CPRG database (1995–1997). VPIP equals 1 if the player called, bet, or raised preflop. Postflop aggression equals 1 if the player bet or raised on the flop, turn, or river. Session gap cutoff is 20 minutes.
+Notes: Data source is the University of Alberta CPRG database (1995-1997). VPIP equals 1 if the player called, bet, or raised preflop. Postflop aggression equals 1 if the player bet or raised on the flop, turn, or river. Session gap cutoff is 20 minutes.
 ```
 
 ---
@@ -289,18 +289,18 @@ Using a census of four million hand decisions from online poker, this paper prov
 
 ## References
 
-- Barberis, N. (2012). A model of casino gambling. *Management Science*, 58(1), 35–51.
-- Billings, D., Davidson, A., Schaeffer, J., & Szafron, D. (2002). The challenge of poker. *Artificial Intelligence*, 134(1–2), 201–240.
-- Camerer, C., Babcock, L., Loewenstein, G., & Thaler, R. (1997). Labor supply of New York City cabdrivers: One day at a time. *Quarterly Journal of Economics*, 112(2), 407–441.
-- Chetty, R., Friedman, J. N., Olsen, T., & Pistaferri, L. (2011). Adjustment costs, firm responses, and micro vs. macro labor supply elasticities: Evidence from Danish tax records. *Quarterly Journal of Economics*, 126(2), 749–804.
-- Farber, H. S. (2005). Is labor supply of taxi drivers really backward-bending? Empirical evidence. *Journal of Political Economy*, 113(4), 857–882.
-- Farber, H. S. (2008). Reference-dependent preferences and labor supply: The case of New York City taxi drivers. *American Economic Review*, 98(3), 1069–1082.
-- Farber, H. S. (2015). Why you can't find a taxi in the rain, and other labor supply puzzles. *Quarterly Journal of Economics*, 130(4), 1975–2026.
-- Imas, A. (2016). The realization effect: A test of how realized versus paper outcomes affect risk taking. *American Economic Review*, 106(8), 2086–2109.
-- Kahneman, D., & Tversky, A. (1979). Prospect theory: An analysis of decision under risk. *Econometrica*, 47(2), 263–291.
-- McCrary, J. (2008). Manipulation of the running variable in the regression discontinuity design: A density test. *Journal of Econometrics*, 142(2), 698–714.
-- Narayanan, S., & Manchanda, P. (2012). An empirical analysis of individual-level casino gambling behavior. *Quantitative Marketing and Economics*, 10(3), 361–402.
-- Post, T., Van den Assem, M. J., Baltussen, G., & Thaler, R. H. (2008). Deal or no deal? Decision making under risk in a large-payoff game show. *American Economic Review*, 98(1), 38–71.
-- Rabin, M. (2000). Risk aversion and expected-utility theory: A calibration theorem. *Econometrica*, 68(5), 1281–1292.
-- Thaler, R. H. (1985). Mental accounting and consumer choice. *Marketing Science*, 4(3), 199–214.
-- Thaler, R. H., & Johnson, E. J. (1990). Gambling with the house money and trying to break even: The effects of prior outcomes on risky choice. *Management Science*, 36(6), 643–660.
+- Barberis, N. (2012). A model of casino gambling. *Management Science*, 58(1), 35-51.
+- Billings, D., Davidson, A., Schaeffer, J., & Szafron, D. (2002). The challenge of poker. *Artificial Intelligence*, 134(1-2), 201-240.
+- Camerer, C., Babcock, L., Loewenstein, G., & Thaler, R. (1997). Labor supply of New York City cabdrivers: One day at a time. *Quarterly Journal of Economics*, 112(2), 407-441.
+- Chetty, R., Friedman, J. N., Olsen, T., & Pistaferri, L. (2011). Adjustment costs, firm responses, and micro vs. macro labor supply elasticities: Evidence from Danish tax records. *Quarterly Journal of Economics*, 126(2), 749-804.
+- Farber, H. S. (2005). Is labor supply of taxi drivers really backward-bending? Empirical evidence. *Journal of Political Economy*, 113(4), 857-882.
+- Farber, H. S. (2008). Reference-dependent preferences and labor supply: The case of New York City taxi drivers. *American Economic Review*, 98(3), 1069-1082.
+- Farber, H. S. (2015). Why you can't find a taxi in the rain, and other labor supply puzzles. *Quarterly Journal of Economics*, 130(4), 1975-2026.
+- Imas, A. (2016). The realization effect: A test of how realized versus paper outcomes affect risk taking. *American Economic Review*, 106(8), 2086-2109.
+- Kahneman, D., & Tversky, A. (1979). Prospect theory: An analysis of decision under risk. *Econometrica*, 47(2), 263-291.
+- McCrary, J. (2008). Manipulation of the running variable in the regression discontinuity design: A density test. *Journal of Econometrics*, 142(2), 698-714.
+- Narayanan, S., & Manchanda, P. (2012). An empirical analysis of individual-level casino gambling behavior. *Quantitative Marketing and Economics*, 10(3), 361-402.
+- Post, T., Van den Assem, M. J., Baltussen, G., & Thaler, R. H. (2008). Deal or no deal? Decision making under risk in a large-payoff game show. *American Economic Review*, 98(1), 38-71.
+- Rabin, M. (2000). Risk aversion and expected-utility theory: A calibration theorem. *Econometrica*, 68(5), 1281-1292.
+- Thaler, R. H. (1985). Mental accounting and consumer choice. *Marketing Science*, 4(3), 199-214.
+- Thaler, R. H., & Johnson, E. J. (1990). Gambling with the house money and trying to break even: The effects of prior outcomes on risky choice. *Management Science*, 36(6), 643-660.
